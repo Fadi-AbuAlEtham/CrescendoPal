@@ -4,64 +4,33 @@ import androidx.annotation.NonNull;
 
 import java.util.List;
 
-public class Teacher {
-    private String id;
-    private String name;
-    private String instrument;
-    private String location;
-    private boolean isOnlineAvailable;
+public class Teacher extends User{
+    private List<String> instrument;
     private boolean offersTrial;
     private double hourlyRate;
-    private List<String> availableDays; // e.g., ["Monday", "Wednesday"]
-    private List<String> availableTimes; // e.g., ["4PM", "6PM"]
-    private int profileImageResId;
+    private boolean isOnlineAvailable;
+    private List<String> availableDays;
+    private List<String> availableTimes;
 
     public Teacher() {
     }
 
-    public Teacher(String id, String name, String instrument, String location, boolean isOnlineAvailable, boolean offersTrial, double hourlyRate, List<String> availableDays, List<String> availableTimes, int profileImageResId) {
-        this.id = id;
-        this.name = name;
+    public Teacher(String id, String name, List<String> instrument, String location, boolean isOnlineAvailable, boolean offersTrial, double hourlyRate, List<String> availableDays, List<String> availableTimes, int profileImageResId) {
         this.instrument = instrument;
-        this.location = location;
         this.isOnlineAvailable = isOnlineAvailable;
         this.offersTrial = offersTrial;
         this.hourlyRate = hourlyRate;
         this.availableDays = availableDays;
         this.availableTimes = availableTimes;
-        this.profileImageResId = profileImageResId;
     }
 
-    public String getId() {
-        return id;
-    }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getInstrument() {
+    public List<String> getInstrument() {
         return instrument;
     }
 
-    public void setInstrument(String instrument) {
+    public void setInstrument(List<String> instrument) {
         this.instrument = instrument;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
     }
 
     public boolean isOnlineAvailable() {
@@ -104,28 +73,16 @@ public class Teacher {
         this.availableTimes = availableTimes;
     }
 
-    public int getProfileImageResId() {
-        return profileImageResId;
-    }
-
-    public void setProfileImageResId(int profileImageResId) {
-        this.profileImageResId = profileImageResId;
-    }
-
     @NonNull
     @Override
     public String toString() {
         return "Teacher{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
                 ", instrument='" + instrument + '\'' +
-                ", location='" + location + '\'' +
                 ", isOnlineAvailable=" + isOnlineAvailable +
                 ", offersTrial=" + offersTrial +
                 ", hourlyRate=" + hourlyRate +
                 ", availableDays=" + availableDays +
                 ", availableTimes=" + availableTimes +
-                ", profileImageResId=" + profileImageResId +
                 '}';
     }
 }
