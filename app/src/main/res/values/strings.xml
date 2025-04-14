@@ -1,4 +1,34 @@
 <resources>
     <string name="app_name">Crescendo Pal</string>
     <string name="crescendo_pal">Crescendo Pal</string>
+    <string name="cart">Cart</string>
+    <string name="list_of_available_instruments">List of available instruments</string>
+    <string name="add_instrument">Add Instrument</string>
+    <string name="instrument_image">Instrument Image</string>
+    <string name="instrument_name">Instrument Name</string>
+    <string name="price">Price</string>
+    <string name="short_description_goes_here">Short description goes here</string>
+    <string name="seller_name" />
+    <string name="add_to_cart">Add to Cart</string>
+    <string name="rent_now">Rent Now</string>
+    <string name="buy_now">Buy Now</string>
+    <string name="instrument_description">Instrument Description</string>
+    <string name="instrument_name_form">Instrument Name:</string>
+    <string name="enter_instrument_name">Enter instrument name</string>
+    <string name="description">Description:</string>
+    <string name="describe_the_instrument">Describe the instrument</string>
+    <string name="price_form">Price:</string>
+    <string name="enter_price">Enter price</string>
+    <string name="seller_name_form">Seller Name:</string>
+    <string name="enter_your_name">Enter your name</string>
+    <string name="instrument_type_form">Instrument Type:</string>
+    <string name="condition_form">Condition:</string>
+    <string name="new_form">New</string>
+    <string name="used_form">Used</string>
+    <string name="rental_option_form">Rental Option:</string>
+    <string name="upload_image_form">Upload Image:</string>
+    <string name="camera_icon">Camera icon</string>
+    <string name="tap_to_upload">Tap to upload</string>
+    <string name="add_instrument_form">Add Instrument</string>
+    <string name="checkout">Checkout</string>
 </resources>
