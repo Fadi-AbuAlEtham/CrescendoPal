@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp"
+    tools:context=".AddInstrument">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp">
+
+        <!-- Instrument Name -->
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="260dp"
+            android:layout_height="148dp"
+            android:layout_marginBottom="24dp"
+            android:contentDescription="@string/crescendo_pal"
+            app:srcCompat="@drawable/crescendo_pal_logo_circ" />
+
+        <TextView
+            android:id="@+id/txtAddInst"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/adlam_display"
+            android:gravity="center_horizontal"
+            android:text="@string/add_instrument"
+            android:textColor="#0F2E52"
+            android:textColorLink="#3D55D3"
+            android:textSize="28sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="@string/instrument_name_form"
+            android:textColor="#333"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/editName"
+            android:layout_width="match_parent"
+            android:layout_height="59dp"
+            android:layout_marginBottom="12dp"
+            android:autofillHints="musical instrument name"
+            android:hint="@string/enter_instrument_name"
+            android:inputType="textPersonName" />
+
+        <!-- Description -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="@string/description"
+            android:textColor="#333"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/editDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:autofillHints="instrument description"
+            android:hint="@string/describe_the_instrument"
+            android:inputType="textMultiLine"
+            android:minLines="2" />
+
+        <!-- Price -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="@string/price_form"
+            android:textColor="#333"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/editPrice"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:layout_marginBottom="12dp"
+            android:autofillHints="instrument price"
+            android:hint="@string/enter_price"
+            android:inputType="numberDecimal" />
+
+        <!-- Seller Name -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="@string/seller_name_form"
+            android:textColor="#333"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/editSeller"
+            android:layout_width="match_parent"
+            android:layout_height="57dp"
+            android:layout_marginBottom="12dp"
+            android:autofillHints="Seller Name"
+            android:hint="@string/enter_your_name"
+            android:inputType="text" />
+
+        <!-- Type -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="@string/instrument_type_form"
+            android:textColor="#333"
+            android:textSize="20sp" />
+
+        <Spinner
+            android:id="@+id/spinnerType"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Condition -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="@string/condition_form"
+            android:textColor="#333"
+            android:textSize="20sp" />
+
+        <RadioGroup
+            android:id="@+id/radioGroupCondition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radioNew"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="40dp"
+                android:text="@string/new_form"
+                android:textSize="16sp" />
+
+            <RadioButton
+                android:id="@+id/radioUsed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/used_form"
+                android:textSize="16sp" />
+        </RadioGroup>
+
+        <!-- For Rent -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="@string/rental_option_form"
+            android:textColor="#333"
+            android:textSize="20sp" />
+
+        <Switch
+            android:id="@+id/switchForRent"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginBottom="16dp"
+            android:text="Available for Rent?"
+            android:textSize="16sp" />
+
+        <!-- Image Upload -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="@string/upload_image_form"
+            android:textColor="#333"
+            android:textSize="20sp" />
+
+        <FrameLayout
+            android:layout_width="200dp"
+            android:layout_height="181dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp">
+
+            <ImageView
+                android:id="@+id/imagePreview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/dashed_border"
+                android:contentDescription="@string/crescendo_pal"
+                android:scaleType="centerCrop" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#55000000" />
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:contentDescription="@string/camera_icon"
+                android:src="@drawable/baseline_add_a_photo_24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|bottom"
+                android:layout_marginBottom="12dp"
+                android:text="@string/tap_to_upload"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp" />
+        </FrameLayout>
+
+        <!-- Submit Button -->
+        <Button
+            android:id="@+id/btnAddInstrument"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="12dp"
+            android:text="@string/add_instrument_form" />
+    </LinearLayout>
+</ScrollView>

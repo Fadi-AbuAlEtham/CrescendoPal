@@ -1,5 +1,7 @@
 package com.example.crescendopal.data;
 
+import android.net.Uri;
+
 import androidx.annotation.NonNull;
 
 public class Instrument {
@@ -8,12 +10,29 @@ public class Instrument {
     private String type; // e.g., "Keyboard", "Guitar"
     private String condition; // "New" or "Used"
     private double price;
+    private String description;
     private boolean isForRent;
     private String sellerName;
     private int imageResId;
     private boolean isAvailable;
+    private Uri imageUri;
 
     public Instrument() {
+    }
+
+    public Instrument(String id, String name, String type, String condition, double price, boolean isForRent,
+                      String sellerName, int imageResId, boolean isAvailable, String description, Uri imageUri) {
+        this.id = id;
+        this.name = name;
+        this.type = type;
+        this.condition = condition;
+        this.price = price;
+        this.isForRent = isForRent;
+        this.sellerName = sellerName;
+        this.imageResId = imageResId;
+        this.isAvailable = isAvailable;
+        this.description = description;
+        this.imageUri = imageUri;
     }
 
     public String getId() {
@@ -88,6 +107,22 @@ public class Instrument {
         isAvailable = available;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Uri getImageUri() {
+        return imageUri;
+    }
+
+    public void setImageUri(Uri imageUri) {
+        this.imageUri = imageUri;
+    }
+
     @NonNull
     @Override
     public String toString() {
@@ -101,6 +136,8 @@ public class Instrument {
                 ", sellerName='" + sellerName + '\'' +
                 ", imageResId=" + imageResId +
                 ", isAvailable=" + isAvailable +
+                ", description='" + description + '\'' +
+                ", imageUri=" + imageUri +
                 '}';
     }
 }
