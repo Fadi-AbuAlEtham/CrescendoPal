@@ -31,4 +31,5 @@
     <string name="tap_to_upload">Tap to upload</string>
     <string name="add_instrument_form">Add Instrument</string>
     <string name="checkout">Checkout</string>
+    <string name="cartitems">cartItems</string>
 </resources>

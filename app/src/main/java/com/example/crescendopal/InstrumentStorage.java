@@ -38,4 +38,17 @@ public class InstrumentStorage {
         Type type = new TypeToken<List<Instrument>>() {}.getType();
         return gson.fromJson(json, type);
     }
+
+    public static void addInstrumentBack(Context context, Instrument instrument) {
+        List<Instrument> currentList = loadInstruments(context);
+
+        // Prevent duplicates
+        for (Instrument i : currentList) {
+            if (i.getId().equals(instrument.getId())) return;
+        }
+
+        currentList.add(instrument);
+        saveInstruments(context, currentList);
+    }
+
 }

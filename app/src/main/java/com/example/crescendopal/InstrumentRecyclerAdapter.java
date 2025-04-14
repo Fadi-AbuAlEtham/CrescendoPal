@@ -72,17 +72,35 @@ public class InstrumentRecyclerAdapter extends RecyclerView.Adapter<InstrumentRe
 
         // Dynamic behavior based on mode
         if (adapterMode == MODE_CART) {
-            holder.btnAddToCart.setImageResource(R.drawable.ic_remove_item); // Replace with your delete icon
+            holder.btnAddToCart.setImageResource(R.drawable.ic_remove_item);
             holder.btnAddToCart.setOnClickListener(v -> {
                 CartManager.removeFromCart(context, instrument);
                 instrumentList.remove(position);
                 notifyItemRemoved(position);
+
+                // Return item to main inventory
+                InstrumentStorage.addInstrumentBack(context, instrument);
+
                 Toast.makeText(context, "Removed from cart", Toast.LENGTH_SHORT).show();
             });
+
+            // Prevent going to details screen when in cart
+            holder.itemView.setOnClickListener(null);
         } else {
-            holder.btnAddToCart.setImageResource(R.drawable.ic_cart); // Replace with your cart icon
+            holder.btnAddToCart.setImageResource(R.drawable.ic_cart);
             holder.btnAddToCart.setOnClickListener(v -> {
                 CartManager.addToCart(context, instrument);
+
+                if (context instanceof InstrumentsActivity) {
+                    InstrumentsActivity activity = (InstrumentsActivity) context;
+
+                    activity.getInstrumentList().remove(instrument);
+                    activity.getFilteredList().remove(position);
+
+                    InstrumentStorage.saveInstruments(context, activity.getInstrumentList());
+                }
+
+                notifyItemRemoved(position);
                 Toast.makeText(context, instrument.getName() + " added to cart", Toast.LENGTH_SHORT).show();
             });
         }

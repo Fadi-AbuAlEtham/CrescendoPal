@@ -81,6 +81,5 @@
                 android:scaleType="centerInside"
                 android:src="@drawable/ic_cart" />
         </LinearLayout>
-
     </LinearLayout>
 </androidx.cardview.widget.CardView>

@@ -101,8 +101,82 @@ public class InstrumentsActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        // Reload full list from storage
+        instrumentList = InstrumentStorage.loadInstruments(this);
+
+        // Refill filteredList with new values
+        filteredList.clear();
+        filteredList.addAll(instrumentList);
+
+        // Re-create adapter with fresh list
+        adapter = new InstrumentRecyclerAdapter(this, filteredList, InstrumentRecyclerAdapter.MODE_NORMAL);
+        recyclerView.setAdapter(adapter);
+    }
+
+    public List<Instrument> getInstrumentList() {
+        return instrumentList;
+    }
+
+    public void setInstrumentList(List<Instrument> instrumentList) {
+        this.instrumentList = instrumentList;
+    }
+
+    public List<Instrument> getFilteredList() {
+        return filteredList;
+    }
+
     private void loadSavedInstruments() {
         instrumentList = InstrumentStorage.loadInstruments(this);
+        if (instrumentList == null || instrumentList.isEmpty()) {
+            instrumentList.add(new Instrument(
+                    "1", "Yamaha P-125 Digital Piano", "Piano", "New",
+                    599.99, false, "Alice Music Store",
+                    R.drawable.ic_instrument, true, "88-key compact digital piano.", null
+            ));
+
+            instrumentList.add(new Instrument(
+                    "2", "Fender Stratocaster", "Guitar", "Used",
+                    450.00, true, "Bob’s Guitars",
+                    R.drawable.ic_instrument, true, "Classic electric guitar, great tone.", null
+            ));
+
+            instrumentList.add(new Instrument(
+                    "3", "Pearl Roadshow Drum Kit", "Drums", "New",
+                    749.50, false, "BeatMasters",
+                    R.drawable.ic_instrument, true, "5-piece beginner-friendly drum kit.", null
+            ));
+
+            instrumentList.add(new Instrument(
+                    "4", "Korg EK-50 Arranger Keyboard", "Keyboard", "Used",
+                    399.99, true, "Sami Music Gear",
+                    R.drawable.ic_instrument, true, "Great for performers and composers.", null
+            ));
+
+            instrumentList.add(new Instrument(
+                    "5", "Oud Arabic Luth", "Oud", "New",
+                    299.00, false, "Oriental Sound Shop",
+                    R.drawable.ic_instrument, true, "Traditional oriental instrument.", null
+            ));
+
+            instrumentList.add(new Instrument(
+                    "6", "Darabuka Drum", "Percussion", "Used",
+                    89.99, true, "Rami’s Rhythms",
+                    R.drawable.ic_instrument, true, "Egyptian-style darbuka drum.", null
+            ));
+
+            instrumentList.add(new Instrument(
+                    "7", "Violin 4/4 Beginner Model", "Violin", "New",
+                    120.00, false, "Classic Strings",
+                    R.drawable.ic_instrument, true, "Perfect for students and practice.", null
+            ));
+
+            InstrumentStorage.saveInstruments(this, instrumentList);
+        }
+
         filteredList.clear();
         filteredList.addAll(instrumentList);
     }
