@@ -32,4 +32,92 @@
     <string name="add_instrument_form">Add Instrument</string>
     <string name="checkout">Checkout</string>
     <string name="cartitems">cartItems</string>
+    <string name="empty_cart">Your cart is empty!</string>
+    <string name="order_placed">Order placed!</string>
+    <string name="instrument_removed">Instrument removed from cart!</string>
+    <string name="instrument_added_to_cart">Instrument added to cart!</string>"
+    <string name="phone_number_form">Phone Number:</string>
+    <string name="list_of_instruments">List of instruments</string>">
+
+    <string-array name="instrument_types">
+        <item>All</item>
+
+        <item>Guitar</item>
+        <item>Electric Guitar</item>
+        <item>Bass Guitar</item>
+        <item>Ukulele</item>
+        <item>Mandolin</item>
+        <item>Violin</item>
+        <item>Viola</item>
+        <item>Cello</item>
+        <item>Double Bass</item>
+        <item>Oud</item>
+        <item>Qanun</item>
+        <item>Rababa</item>
+        <item>Buzuq</item>
+        <item>Tanbur</item>
+        <item>Santoor</item>
+        <item>Kamanjah</item>
+        <item>Rebab</item>
+        <item>Banjo</item>
+        <item>Harp</item>
+
+        <item>Piano</item>
+        <item>Digital Piano</item>
+        <item>Keyboard</item>
+        <item>Synthesizer</item>
+        <item>Accordion</item>
+
+        <item>Drums</item>
+        <item>Snare Drum</item>
+        <item>Cymbals</item>
+        <item>Cajón</item>
+        <item>Tabla</item>
+        <item>Tabla Baladi</item>
+        <item>Riq</item>
+        <item>Daf</item>
+        <item>Bendir</item>
+        <item>Naqareh</item>
+        <item>Zills / Sagat</item>
+        <item>Darbuka</item>
+        <item>Bongo Drums</item>
+        <item>Triangle</item>
+        <item>Marimba</item>
+        <item>Xylophone</item>
+        <item>Timpani</item>
+
+        <item>Flute</item>
+        <item>Clarinet</item>
+        <item>Saxophone</item>
+        <item>Oboe</item>
+        <item>Bassoon</item>
+        <item>Trumpet</item>
+        <item>Trombone</item>
+        <item>French Horn</item>
+        <item>Tuba</item>
+        <item>Recorder</item>
+        <item>Bagpipes</item>
+        <item>Ney</item>
+        <item>Arghul</item>
+        <item>Mizmar</item>
+        <item>Zurna</item>
+        <item>Kawala</item>
+        <item>Duduk</item>
+
+        <item>DJ Controller</item>
+        <item>Voice / Vocals</item>
+        <item>Studio Equipment</item>
+        <item>Tarab Mic</item>
+        <item>Mawwal Mic</item>
+
+        <item>Harmonica</item>
+        <item>Other</item>
+    </string-array>
+
+    <string-array name="condition_options">
+        <item>All</item>
+        <item>New</item>
+        <item>Used</item>
+    </string-array>
+
 </resources>

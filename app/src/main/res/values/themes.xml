@@ -5,5 +5,20 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
-    <style name="Theme.CrescendoPal" parent="Base.Theme.CrescendoPal" />
+    <style name="Theme.CrescendoPal" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- App Colors -->
+        <item name="colorPrimary">@color/crescendo_primary</item>
+        <item name="colorOnPrimary">@color/crescendo_on_primary</item>
+
+        <item name="colorSecondary">@color/crescendo_secondary</item>
+        <item name="colorOnSecondary">@color/crescendo_on_secondary</item>
+
+        <item name="android:windowBackground">@color/crescendo_background</item>
+
+        <!-- Typography -->
+        <item name="android:fontFamily">@font/poppins</item>
+
+        <!-- Component styling -->
+        <item name="buttonStyle">@style/Widget.CrescendoPal.Button</item>
+    </style>
 </resources>

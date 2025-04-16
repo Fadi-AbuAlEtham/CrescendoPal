@@ -2,4 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="crescendo_primary">#0B2C59</color>
+    <color name="crescendo_on_primary">#FFFFFF</color>
+    <color name="crescendo_secondary">#D4A645</color>
+    <color name="crescendo_on_secondary">#000000</color>
+    <color name="crescendo_background">#FDFDFD</color>
 </resources>
