@@ -1,0 +1,111 @@
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="6dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <!-- Book Image -->
+        <ImageView
+            android:id="@+id/imgBook"
+            android:layout_width="105dp"
+            android:layout_height="176dp"
+            android:contentDescription="@string/book_cover"
+            android:src="@drawable/ic_book"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Title -->
+        <TextView
+            android:id="@+id/txtBookTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Book Title"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/imgBook"
+            app:layout_constraintTop_toTopOf="@id/imgBook" />
+
+        <!-- Instrument -->
+        <TextView
+            android:id="@+id/txtBookInstrument"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="For: Piano"
+            android:textColor="#777"
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@id/txtBookTitle"
+            app:layout_constraintStart_toStartOf="@id/txtBookTitle"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Difficulty -->
+        <TextView
+            android:id="@+id/txtBookDifficulty"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Level: Beginner"
+            android:textColor="#777"
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@id/txtBookInstrument"
+            app:layout_constraintStart_toStartOf="@id/txtBookTitle"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Uploader -->
+        <TextView
+            android:id="@+id/txtUploader"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Uploaded by: John"
+            android:textColor="#888"
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@id/txtBookDifficulty"
+            app:layout_constraintStart_toStartOf="@id/txtBookTitle"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Price -->
+        <TextView
+            android:id="@+id/txtBookPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$10.99"
+            android:textColor="#4CAF50"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/txtUploader"
+            app:layout_constraintStart_toStartOf="@id/txtBookTitle" />
+
+        <!-- Quantity -->
+        <TextView
+            android:id="@+id/txtBookQty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Qty: 3"
+            android:textColor="#555"
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@id/txtBookPrice"
+            app:layout_constraintStart_toStartOf="@id/txtBookPrice" />
+
+        <!-- Add Button -->
+        <ImageButton
+            android:id="@+id/btnAddToCart"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/add_to_cart"
+            android:src="@drawable/ic_cart"
+            android:scaleType="fitCenter"
+            android:padding="6dp"
+            app:layout_constraintBottom_toBottomOf="@id/imgBook"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

@@ -37,7 +37,10 @@
     <string name="instrument_removed">Instrument removed from cart!</string>
     <string name="instrument_added_to_cart">Instrument added to cart!</string>"
     <string name="phone_number_form">Phone Number:</string>
-    <string name="list_of_instruments">List of instruments</string>">
+    <string name="list_of_instruments">List of instruments</string>
+    <string name="book_cover">book cover\n</string>
+    <string name="list_of_books">list of books\n</string>
+    <string name="add_book">Add Book</string>">
 
     <string-array name="instrument_types">
         <item>All</item>
@@ -118,6 +121,13 @@
         <item>All</item>
         <item>New</item>
         <item>Used</item>
+    </string-array>
+
+    <string-array name="difficulty_options">
+        <item>All</item>
+        <item>Beginner</item>
+        <item>Intermediate</item>
+        <item>Advanced</item>
     </string-array>
 
 </resources>

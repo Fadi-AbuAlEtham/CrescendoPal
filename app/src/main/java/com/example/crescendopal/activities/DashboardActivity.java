@@ -14,7 +14,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.crescendopal.R;
 
 public class DashboardActivity extends AppCompatActivity {
-    CardView instrumentCard, classesCard, myHubCard;
+    CardView instrumentCard, bookCard, myHubCard;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +28,7 @@ public class DashboardActivity extends AppCompatActivity {
 
         // Find the cards
         instrumentCard = findViewById(R.id.instrumentCard);
-        classesCard = findViewById(R.id.classesCard);
+        bookCard = findViewById(R.id.booksCard);
         myHubCard = findViewById(R.id.myHubCard);
 
         // Set click listeners
@@ -39,6 +39,10 @@ public class DashboardActivity extends AppCompatActivity {
                 Intent intent = new Intent(DashboardActivity.this, InstrumentsActivity.class);
                 startActivity(intent);
             }
+        });
+
+        bookCard.setOnClickListener(v -> {
+            startActivity(new Intent(this, BookActivity.class));
         });
 
         myHubCard.setOnClickListener(v -> {

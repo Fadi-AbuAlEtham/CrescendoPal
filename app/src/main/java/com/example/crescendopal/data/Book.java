@@ -1,5 +1,7 @@
 package com.example.crescendopal.data;
 
+import android.net.Uri;
+
 import androidx.annotation.NonNull;
 
 public class Book {
@@ -16,7 +18,9 @@ public class Book {
     public Book() {
     }
 
-    public Book(String id, String title, String instrument, String difficulty, boolean isDownloadable, double price, int imageResId, String uploaderName, int quantity) {
+    public Book(String id, String title, String instrument, String difficulty,
+                boolean isDownloadable, double price, int imageResId,
+                String uploaderName, int quantity) {
         this.id = id;
         this.title = title;
         this.instrument = instrument;
@@ -27,6 +31,19 @@ public class Book {
         this.uploaderName = uploaderName;
         this.quantity = quantity;
     }
+
+    public Book(String id, String title, String instrument, String difficulty, boolean downloadable, double price, int image, String uploader, int bookQuantity, Uri uri) {
+        this.id = id;
+        this.title = title;
+        this.instrument = instrument;
+        this.difficulty = difficulty;
+        this.isDownloadable = isDownloadable;
+        this.price = price;
+        this.imageResId = imageResId;
+        this.uploaderName = uploaderName;
+        this.quantity = quantity;
+    }
+
 
     public String getId() {
         return id;

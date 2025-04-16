@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="12dp"
+    tools:context=".activities.BookActivity">
+
+    <ImageView
+        android:id="@+id/logoImage"
+        android:layout_width="211dp"
+        android:layout_height="179dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="88dp"
+        android:layout_marginBottom="24dp"
+        android:contentDescription="@string/crescendo_pal"
+        app:layout_constraintBottom_toTopOf="@+id/btnCart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/crescendo_pal_logo_circ" />
+
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="279dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="204dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="30dp"
+        android:queryHint="Search books..."
+        app:layout_constraintBottom_toTopOf="@+id/bookRecyclerView"
+        app:layout_constraintEnd_toStartOf="@+id/btnCart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btnCart"
+        android:layout_width="68dp"
+        android:layout_height="56dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="11dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/cart"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_cart"
+        app:layout_constraintBottom_toTopOf="@+id/filterSection"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/searchView" />
+
+    <LinearLayout
+        android:id="@+id/filterSection"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="12dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingTop="4dp"
+        android:paddingBottom="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchView">
+
+        <Spinner
+            android:id="@+id/spinnerInstrument"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:entries="@array/instrument_types"
+            android:spinnerMode="dropdown" />
+
+        <Spinner
+            android:id="@+id/spinnerDifficulty"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:entries="@array/difficulty_options"
+            android:spinnerMode="dropdown" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/bookRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="84dp"
+        android:contentDescription="@string/list_of_books"
+        app:layout_constraintTop_toBottomOf="@+id/filterSection"
+        app:layout_constraintBottom_toTopOf="@+id/btnAddBook"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnAddBook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="@string/add_book"
+        app:srcCompat="@drawable/ic_add_inst"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

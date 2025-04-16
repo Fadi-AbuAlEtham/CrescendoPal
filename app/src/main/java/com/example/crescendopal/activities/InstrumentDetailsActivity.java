@@ -110,7 +110,7 @@ public class InstrumentDetailsActivity extends AppCompatActivity {
         // Handle Rent button click
         btnRent.setOnClickListener(v -> {
             markAsUnavailable();
-            RentedStorage.add(this, getCurrentInstrument());
+            RentedStorage.addInstrument(this, getCurrentInstrument());
             Toast.makeText(this, "Rented successfully!", Toast.LENGTH_SHORT).show();
             removeFromInstruments();
             CartManager.removeFromCart(this, getCurrentInstrument());
@@ -120,7 +120,7 @@ public class InstrumentDetailsActivity extends AppCompatActivity {
         // Handle Buy button click
         btnBuy.setOnClickListener(v -> {
             markAsUnavailable();
-            BoughtStorage.add(this, getCurrentInstrument());
+            BoughtStorage.addInstrument(this, getCurrentInstrument());
             Toast.makeText(this, "Purchased successfully!", Toast.LENGTH_SHORT).show();
             removeFromInstruments();
             CartManager.removeFromCart(this, getCurrentInstrument());

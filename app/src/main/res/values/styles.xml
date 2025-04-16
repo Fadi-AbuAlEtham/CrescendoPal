@@ -1,0 +1,21 @@
+<resources>
+    <!-- Buttons -->
+    <style name="Widget.CrescendoPal.Button" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/crescendo_secondary</item>
+        <item name="android:textColor">@color/crescendo_on_secondary</item>
+        <item name="cornerRadius">16dp</item>
+    </style>
+
+    <!-- TextViews -->
+    <style name="Widget.CrescendoPal.Text" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:textColor">@color/crescendo_primary</item>
+        <item name="android:fontFamily">@font/poppins</item>
+    </style>
+
+    <!-- Titles -->
+    <style name="Text.Title.Crescendo" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textColor">@color/crescendo_primary</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">@font/poppins</item>
+    </style>
+</resources>
