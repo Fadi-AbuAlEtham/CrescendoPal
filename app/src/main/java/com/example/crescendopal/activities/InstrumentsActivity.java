@@ -1,10 +1,15 @@
-package com.example.crescendopal;
+package com.example.crescendopal.activities;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.SearchView;
+import android.widget.Spinner;
+import android.widget.Switch;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,10 +19,14 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.crescendopal.InstrumentRecyclerAdapter;
+import com.example.crescendopal.R;
 import com.example.crescendopal.data.Instrument;
+import com.example.crescendopal.storage.InstrumentStorage;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class InstrumentsActivity extends AppCompatActivity {
@@ -28,6 +37,9 @@ public class InstrumentsActivity extends AppCompatActivity {
     private SearchView searchView;
     private FloatingActionButton btnAddInst;
     private ImageButton btnCart;
+    private Spinner spinnerType, spinnerCondition;
+    private Switch switchRentOnly;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,11 +57,22 @@ public class InstrumentsActivity extends AppCompatActivity {
         searchView = findViewById(R.id.searchView);
         btnAddInst = findViewById(R.id.btnAddInst);
         btnCart = findViewById(R.id.btnCart);
+        spinnerType = findViewById(R.id.spinnerType);
+        spinnerCondition = findViewById(R.id.spinnerCondition);
+        switchRentOnly = findViewById(R.id.switchRentOnly);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // Fill with data
         loadSavedInstruments();
+
+        ArrayAdapter<String> conditionAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,
+                Arrays.asList("All", "New", "Used"));
+        conditionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerCondition.setAdapter(conditionAdapter);
+
+        setupFilters();
+
 
         // Initialize adapter with normal mode
         adapter = new InstrumentRecyclerAdapter(this, filteredList, InstrumentRecyclerAdapter.MODE_NORMAL);
@@ -58,7 +81,7 @@ public class InstrumentsActivity extends AppCompatActivity {
         setupSearchFilter();
 
         btnAddInst.setOnClickListener(v -> {
-            Intent intent = new Intent(InstrumentsActivity.this, AddInstrument.class);
+            Intent intent = new Intent(InstrumentsActivity.this, AddInstrumentActivity.class);
             startActivityForResult(intent, 101);
         });
 
@@ -104,17 +127,8 @@ public class InstrumentsActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
-        // Reload full list from storage
-        instrumentList = InstrumentStorage.loadInstruments(this);
-
-        // Refill filteredList with new values
-        filteredList.clear();
-        filteredList.addAll(instrumentList);
-
-        // Re-create adapter with fresh list
-        adapter = new InstrumentRecyclerAdapter(this, filteredList, InstrumentRecyclerAdapter.MODE_NORMAL);
-        recyclerView.setAdapter(adapter);
+        loadSavedInstruments();
+        applyAllFilters();
     }
 
     public List<Instrument> getInstrumentList() {
@@ -183,22 +197,55 @@ public class InstrumentsActivity extends AppCompatActivity {
 
     private void setupSearchFilter() {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false; // we handle it on text change
+            @Override public boolean onQueryTextSubmit(String query) {
+                return false;
             }
 
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                filteredList.clear();
-                for (Instrument i : instrumentList) {
-                    if (i.getName().toLowerCase().contains(newText.toLowerCase())) {
-                        filteredList.add(i);
-                    }
-                }
-                adapter.notifyDataSetChanged();
+            @Override public boolean onQueryTextChange(String newText) {
+                applyAllFilters();
                 return true;
             }
         });
+    }
+
+    private void setupFilters() {
+        // Trigger filter when spinners or switch change
+        spinnerType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                applyAllFilters();
+            }
+            @Override public void onNothingSelected(AdapterView<?> parent) {}
+        });
+
+        spinnerCondition.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                applyAllFilters();
+            }
+            @Override public void onNothingSelected(AdapterView<?> parent) {}
+        });
+
+        switchRentOnly.setOnCheckedChangeListener((buttonView, isChecked) -> applyAllFilters());
+    }
+
+    private void applyAllFilters() {
+        String selectedType = spinnerType.getSelectedItem().toString();
+        String selectedCondition = spinnerCondition.getSelectedItem().toString();
+        boolean rentOnly = switchRentOnly.isChecked();
+        String searchText = searchView.getQuery().toString().toLowerCase();
+
+        filteredList.clear();
+
+        for (Instrument i : instrumentList) {
+            boolean matchesType = selectedType.equals("All") || i.getType().equalsIgnoreCase(selectedType);
+            boolean matchesCondition = selectedCondition.equals("All") || i.getCondition().equalsIgnoreCase(selectedCondition);
+            boolean matchesRent = !rentOnly || i.isForRent();
+            boolean matchesSearch = i.getName().toLowerCase().contains(searchText);
+
+            if (matchesType && matchesCondition && matchesRent && matchesSearch) {
+                filteredList.add(i);
+            }
+        }
+
+        adapter.notifyDataSetChanged();
     }
 }

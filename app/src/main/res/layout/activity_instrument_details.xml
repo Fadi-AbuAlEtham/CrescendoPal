@@ -28,7 +28,7 @@
             android:layout_margin="5dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="4dp"
-            android:text="Instrument Name"
+            android:text="Instrument Name:"
             android:textColor="#666"
             android:textSize="24sp" />
 
@@ -57,7 +57,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="4dp"
-            android:text="Description"
+            android:text="Description:"
             android:textColor="#666"
             android:textSize="24sp" />
 
@@ -80,7 +80,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="4dp"
-            android:text="Price"
+            android:text="Price:"
             android:textColor="#666"
             android:textSize="24sp" />
 
@@ -102,7 +102,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="4dp"
-            android:text="Seller"
+            android:text="Seller:"
             android:textColor="#666"
             android:textSize="24sp" />
 
@@ -116,15 +116,40 @@
             android:textColor="#888"
             android:textSize="20sp" />
 
-        <!-- Availability Label -->
         <TextView
+            android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="4dp"
-            android:text="Availability"
+            android:text="@string/phone_number_form"
+            android:textColor="#666"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/phoneText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autoLink="phone"
+            android:text="123-456-7890"
+            android:textSize="18sp"
+            android:textColor="@android:color/holo_blue_dark"
+            android:padding="12dp"
+            android:layout_marginTop="8dp"
+            android:linksClickable="true" />
+
+        <!-- Availability Label -->
+        <TextView
+            android:id="@+id/txtAvailability"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="4dp"
+            android:text="Availability:"
             android:textColor="#666"
             android:textSize="24sp" />
 
@@ -165,6 +190,5 @@
                 android:text="@string/buy_now"
                 android:textSize="24sp" />
         </LinearLayout>
-
     </LinearLayout>
 </ScrollView>

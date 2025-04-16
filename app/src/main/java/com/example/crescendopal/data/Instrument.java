@@ -4,7 +4,7 @@ import android.net.Uri;
 
 import androidx.annotation.NonNull;
 
-public class Instrument {
+public class Instrument implements Comparable<Instrument> {
     private String id;
     private String name;
     private String type; // e.g., "Keyboard", "Guitar"
@@ -139,5 +139,54 @@ public class Instrument {
                 ", description='" + description + '\'' +
                 ", imageUri=" + imageUri +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Instrument that = (Instrument) o;
+        return id != null && id.equals(that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
+    }
+
+    @Override
+    public int compareTo(Instrument o) {
+        if (this.name != null && o.name != null) {
+            return this.name.compareTo(o.name);
+        }
+        if (this.type != null && o.type != null) {
+            return this.type.compareTo(o.type);
+        }
+        if (this.condition != null && o.condition != null) {
+            return this.condition.compareTo(o.condition);
+        }
+        if (this.price != o.price) {
+            return Double.compare(this.price, o.price);
+        }
+        if (this.isForRent != o.isForRent) {
+            return Boolean.compare(this.isForRent, o.isForRent);
+        }
+        if (this.sellerName != null && o.sellerName != null) {
+            return this.sellerName.compareTo(o.sellerName);
+        }
+        if (this.imageResId != o.imageResId) {
+            return Integer.compare(this.imageResId, o.imageResId);
+        }
+        if (this.isAvailable != o.isAvailable) {
+            return Boolean.compare(this.isAvailable, o.isAvailable);
+        }
+        if (this.description != null && o.description != null) {
+            return this.description.compareTo(o.description);
+        }
+        if (this.imageUri != null && o.imageUri != null) {
+            return this.imageUri.compareTo(o.imageUri);
+        }
+        return 0;
     }
 }

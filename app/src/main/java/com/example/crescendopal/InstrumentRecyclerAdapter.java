@@ -1,6 +1,5 @@
 package com.example.crescendopal;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -14,7 +13,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.crescendopal.activities.InstrumentDetailsActivity;
+import com.example.crescendopal.activities.InstrumentsActivity;
 import com.example.crescendopal.data.Instrument;
+import com.example.crescendopal.storage.InstrumentStorage;
 
 import java.util.List;
 
@@ -22,6 +24,7 @@ public class InstrumentRecyclerAdapter extends RecyclerView.Adapter<InstrumentRe
 
     public static final int MODE_NORMAL = 0;
     public static final int MODE_CART = 1;
+    public static final int MODE_MYHUB = 2;
     private final Context context;
     private final List<Instrument> instrumentList;
     private final int adapterMode;
@@ -86,6 +89,8 @@ public class InstrumentRecyclerAdapter extends RecyclerView.Adapter<InstrumentRe
 
             // Prevent going to details screen when in cart
             holder.itemView.setOnClickListener(null);
+        } else if (adapterMode == MODE_MYHUB) {
+            holder.btnAddToCart.setVisibility(View.GONE);
         } else {
             holder.btnAddToCart.setImageResource(R.drawable.ic_cart);
             holder.btnAddToCart.setOnClickListener(v -> {
@@ -108,6 +113,7 @@ public class InstrumentRecyclerAdapter extends RecyclerView.Adapter<InstrumentRe
         // Item click → Details
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, InstrumentDetailsActivity.class);
+            intent.putExtra("id", instrument.getId());
             intent.putExtra("name", instrument.getName());
             intent.putExtra("description", instrument.getDescription());
             intent.putExtra("price", instrument.getPrice());
@@ -117,6 +123,9 @@ public class InstrumentRecyclerAdapter extends RecyclerView.Adapter<InstrumentRe
                 intent.putExtra("imageUri", instrument.getImageUri().toString());
             intent.putExtra("available", instrument.isAvailable());
             intent.putExtra("rent", instrument.isForRent());
+            if (adapterMode == 2) {
+                intent.putExtra("source", "myhub");
+            }
             context.startActivity(intent);
         });
     }
@@ -125,4 +134,11 @@ public class InstrumentRecyclerAdapter extends RecyclerView.Adapter<InstrumentRe
     public int getItemCount() {
         return instrumentList.size();
     }
+
+    public void updateData(List<Instrument> newList) {
+        instrumentList.clear();
+        instrumentList.addAll(newList);
+        notifyDataSetChanged();
+    }
+
 }

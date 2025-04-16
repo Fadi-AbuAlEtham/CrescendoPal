@@ -1,4 +1,4 @@
-package com.example.crescendopal;
+package com.example.crescendopal.storage;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InstrumentStorage {
-
     private static final String PREFS_NAME = "InstrumentPrefs";
     private static final String KEY_LIST = "instrumentList";
 
@@ -44,7 +43,8 @@ public class InstrumentStorage {
 
         // Prevent duplicates
         for (Instrument i : currentList) {
-            if (i.getId().equals(instrument.getId())) return;
+            if (i.getId().equals(instrument.getId()))
+                return;
         }
 
         currentList.add(instrument);

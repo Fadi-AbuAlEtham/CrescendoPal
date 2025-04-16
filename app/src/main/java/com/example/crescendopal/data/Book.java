@@ -11,8 +11,21 @@ public class Book {
     private double price;
     private int imageResId;
     private String uploaderName;
+    private int quantity;
 
     public Book() {
+    }
+
+    public Book(String id, String title, String instrument, String difficulty, boolean isDownloadable, double price, int imageResId, String uploaderName, int quantity) {
+        this.id = id;
+        this.title = title;
+        this.instrument = instrument;
+        this.difficulty = difficulty;
+        this.isDownloadable = isDownloadable;
+        this.price = price;
+        this.imageResId = imageResId;
+        this.uploaderName = uploaderName;
+        this.quantity = quantity;
     }
 
     public String getId() {
@@ -79,6 +92,14 @@ public class Book {
         this.uploaderName = uploaderName;
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
     @NonNull
     @Override
     public String toString() {
@@ -91,6 +112,7 @@ public class Book {
                 ", price=" + price +
                 ", imageResId=" + imageResId +
                 ", uploaderName='" + uploaderName + '\'' +
+                ", quantity=" + quantity +
                 '}';
     }
 }
