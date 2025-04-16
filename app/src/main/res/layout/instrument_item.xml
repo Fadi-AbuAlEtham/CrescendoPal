@@ -1,85 +1,91 @@
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
     app:cardCornerRadius="12dp"
     app:cardElevation="6dp">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="245dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
+        android:layout_height="wrap_content"
         android:padding="16dp">
 
+        <!-- Image -->
         <ImageView
             android:id="@+id/imgInst"
             android:layout_width="105dp"
             android:layout_height="176dp"
             android:contentDescription="@string/instrument_image"
-            android:src="@drawable/ic_instrument" />
+            android:src="@drawable/ic_instrument"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
+        <!-- Name -->
+        <TextView
+            android:id="@+id/txtInstName"
             android:layout_width="0dp"
-            android:layout_height="210dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:text="@string/instrument_name"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/imgInst"
+            app:layout_constraintTop_toTopOf="@id/imgInst" />
 
-            <TextView
-                android:id="@+id/txtInstName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="5dp"
-                android:text="@string/instrument_name"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+        <!-- Description -->
+        <TextView
+            android:id="@+id/txtInstDesc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="Very long instrument description that might take too much space if not handled correctly."
+            android:textColor="#777"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/txtInstName"
+            app:layout_constraintTop_toBottomOf="@id/txtInstName" />
 
-            <TextView
-                android:id="@+id/txtInstDesc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="5dp"
-                android:ellipsize="end"
-                android:maxLines="2"
-                android:text="@string/short_description_goes_here"
-                android:textColor="#777"
-                android:textSize="14sp" />
+        <!-- Seller -->
+        <TextView
+            android:id="@+id/txtSeller"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/seller_name"
+            android:textColor="#888"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/txtInstName"
+            app:layout_constraintTop_toBottomOf="@id/txtInstDesc" />
 
-            <TextView
-                android:id="@+id/txtSeller"
-                android:layout_width="178dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                android:text="@string/seller_name"
-                android:textColor="#888"
-                android:textSize="14sp" />
+        <!-- Price -->
+        <TextView
+            android:id="@+id/txtInstPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/price"
+            android:textColor="#666"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@id/txtInstName"
+            app:layout_constraintTop_toBottomOf="@id/txtSeller" />
 
-            <TextView
-                android:id="@+id/txtInstPrice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="20dp"
-                android:text="@string/price"
-                android:textColor="#666"
-                android:textSize="16sp" />
+        <!-- Add to Cart Button -->
+        <ImageButton
+            android:id="@+id/btnAddToCart"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/add_to_cart"
+            android:src="@drawable/ic_cart"
+            android:scaleType="fitCenter"
+            android:padding="6dp"
+            app:layout_constraintBottom_toBottomOf="@id/imgInst"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-            <ImageButton
-                android:id="@+id/btnAddToCart"
-                android:layout_width="51dp"
-                android:layout_height="48dp"
-                android:layout_gravity="end"
-                android:layout_marginTop="30dp"
-                android:background="@android:color/transparent"
-                android:contentDescription="@string/add_to_cart"
-                android:scaleType="centerInside"
-                android:src="@drawable/ic_cart" />
-        </LinearLayout>
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

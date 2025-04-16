@@ -1,4 +1,4 @@
-package com.example.crescendopal;
+package com.example.crescendopal.activities;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -10,11 +10,11 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import java.util.UUID;
+import com.example.crescendopal.R;
 
-public class AddInstrument extends AppCompatActivity {
+public class AddInstrumentActivity extends AppCompatActivity {
 
-    private EditText editName, editDescription, editPrice, editSeller;
+    private EditText editName, editDescription, editPrice, editSeller, editPhone;
     private Spinner spinnerType;
     private RadioGroup radioGroupCondition;
     private Switch switchForRent;
@@ -44,8 +44,8 @@ public class AddInstrument extends AppCompatActivity {
         switchForRent = findViewById(R.id.switchForRent);
         btnAddInstrument = findViewById(R.id.btnAddInstrument);
         imagePreview = findViewById(R.id.imagePreview);
+        editPhone = findViewById(R.id.editTextPhone2);
 
-        // Spinner setup
         ArrayAdapter<String> typeAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item,
                 new String[]{
@@ -85,6 +85,7 @@ public class AddInstrument extends AppCompatActivity {
             String priceStr = editPrice.getText().toString().trim();
             String seller = editSeller.getText().toString().trim();
             String type = spinnerType.getSelectedItem().toString();
+            String phone = editPhone.getText().toString().trim();
             boolean isForRent = switchForRent.isChecked();
 
             // Get condition
@@ -109,6 +110,7 @@ public class AddInstrument extends AppCompatActivity {
             resultIntent.putExtra("condition", condition);
             resultIntent.putExtra("rent", isForRent);
             resultIntent.putExtra("available", true);
+            resultIntent.putExtra("phone", phone);
             if (imageUri != null) {
                 resultIntent.putExtra("imageUri", imageUri.toString());
             }

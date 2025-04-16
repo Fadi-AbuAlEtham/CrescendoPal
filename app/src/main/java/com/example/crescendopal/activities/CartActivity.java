@@ -1,4 +1,4 @@
-package com.example.crescendopal;
+package com.example.crescendopal.activities;
 
 import android.os.Bundle;
 import android.widget.Button;
@@ -12,12 +12,15 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.crescendopal.CartManager;
+import com.example.crescendopal.InstrumentRecyclerAdapter;
+import com.example.crescendopal.R;
 import com.example.crescendopal.data.Instrument;
+import com.example.crescendopal.storage.CartStorage;
 
 import java.util.List;
 
 public class CartActivity extends AppCompatActivity {
-
     private RecyclerView cartRecyclerView;
     private InstrumentRecyclerAdapter adapter;
     private Button btnCheckout;
@@ -68,13 +71,23 @@ public class CartActivity extends AppCompatActivity {
         super.onResume();
 
         List<Instrument> refreshedCart = CartStorage.loadCart(this);
+
+        // Remove unavailable and not-for-rent instruments
+        refreshedCart.removeIf(instrument -> !instrument.isAvailable() && !instrument.isForRent());
+
+        // Update the CartManager list
         CartManager.setCartList(refreshedCart);
 
-        adapter = new InstrumentRecyclerAdapter(
-                this,
-                refreshedCart,
-                InstrumentRecyclerAdapter.MODE_CART
-        );
-        cartRecyclerView.setAdapter(adapter);
+        // Just update the data in the adapter (if it already exists)
+        if (adapter == null) {
+            adapter = new InstrumentRecyclerAdapter(
+                    this,
+                    refreshedCart,
+                    InstrumentRecyclerAdapter.MODE_CART
+            );
+            cartRecyclerView.setAdapter(adapter);
+        } else {
+            adapter.updateData(refreshedCart);
+        }
     }
 }

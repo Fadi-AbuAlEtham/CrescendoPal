@@ -1,4 +1,4 @@
-package com.example.crescendopal;
+package com.example.crescendopal.storage;
 
 import android.content.Context;
 import android.content.SharedPreferences;

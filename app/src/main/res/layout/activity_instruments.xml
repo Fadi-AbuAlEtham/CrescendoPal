@@ -6,71 +6,107 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="12dp"
-    tools:context=".InstrumentsActivity">
-
-    <!-- Search View -->
-
-    <!-- Cart Button -->
-
-    <!-- RecyclerView -->
+    tools:context=".activities.InstrumentsActivity">
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="272dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="21dp"
-        android:layout_marginEnd="48dp"
+        android:layout_width="211dp"
+        android:layout_height="179dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="88dp"
         android:layout_marginBottom="24dp"
+        android:contentDescription="@string/crescendo_pal"
         app:layout_constraintBottom_toTopOf="@+id/btnCart"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.042"
         app:srcCompat="@drawable/crescendo_pal_logo_circ" />
 
     <SearchView
         android:id="@+id/searchView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="279dp"
+        android:layout_height="51dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="204dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="19dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="30dp"
         android:queryHint="Search instruments..."
         app:layout_constraintBottom_toTopOf="@+id/recyclerView"
         app:layout_constraintEnd_toStartOf="@+id/btnCart"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
     </SearchView>
 
     <ImageButton
         android:id="@+id/btnCart"
-        android:layout_width="62dp"
-        android:layout_height="51dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="19dp"
+        android:layout_width="68dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="11dp"
         android:background="@android:color/transparent"
         android:contentDescription="@string/cart"
         android:scaleType="centerInside"
         android:src="@drawable/ic_cart"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+        app:layout_constraintBottom_toTopOf="@+id/filterSection"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/searchView"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintStart_toEndOf="@+id/searchView" />
 
-    <!-- Floating Action Button -->
+    <LinearLayout
+        android:id="@+id/filterSection"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="12dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingTop="4dp"
+        android:paddingBottom="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchView">
+
+        <Spinner
+            android:id="@+id/spinnerType"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:entries="@array/instrument_types"
+            android:spinnerMode="dropdown" />
+
+        <Spinner
+            android:id="@+id/spinnerCondition"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:entries="@array/condition_options"
+            android:spinnerMode="dropdown" />
+
+        <Switch
+            android:id="@+id/switchRentOnly"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginStart="8dp"
+            android:text="Rent"
+            android:textSize="14sp" />
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="84dp"
+        android:layout_width="370dp"
+        android:layout_height="442dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
         android:contentDescription="@string/list_of_available_instruments"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btnAddInst"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView" />
+        app:layout_constraintTop_toBottomOf="@+id/filterSection" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnAddInst"
@@ -84,4 +120,5 @@
         app:layout_constraintTop_toBottomOf="@+id/recyclerView"
         app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/ic_add_inst" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

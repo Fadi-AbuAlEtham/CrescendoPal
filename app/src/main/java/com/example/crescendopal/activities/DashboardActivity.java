@@ -1,4 +1,4 @@
-package com.example.crescendopal;
+package com.example.crescendopal.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,8 +11,10 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class Dashboard extends AppCompatActivity {
-    CardView instrumentCard, classesCard;
+import com.example.crescendopal.R;
+
+public class DashboardActivity extends AppCompatActivity {
+    CardView instrumentCard, classesCard, myHubCard;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,24 +29,20 @@ public class Dashboard extends AppCompatActivity {
         // Find the cards
         instrumentCard = findViewById(R.id.instrumentCard);
         classesCard = findViewById(R.id.classesCard);
+        myHubCard = findViewById(R.id.myHubCard);
 
         // Set click listeners
         instrumentCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Go to InstrumentsActivity
-                Intent intent = new Intent(Dashboard.this, InstrumentsActivity.class);
+                Intent intent = new Intent(DashboardActivity.this, InstrumentsActivity.class);
                 startActivity(intent);
             }
         });
 
-        classesCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Go to ClassesActivity
-                Intent intent = new Intent(Dashboard.this, ClassesActivity.class);
-                startActivity(intent);
-            }
+        myHubCard.setOnClickListener(v -> {
+            startActivity(new Intent(this, MyHubActivity.class));
         });
     }
 }

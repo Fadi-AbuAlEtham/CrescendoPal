@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="24dp"
-    tools:context=".AddInstrument">
+    tools:context=".activities.AddInstrumentActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -112,6 +112,27 @@
             android:inputType="text" />
 
         <!-- Type -->
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="4dp"
+            android:text="@string/phone_number_form"
+            android:textColor="#666"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/editTextPhone2"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_marginBottom="10dp"
+            android:ems="10"
+            android:hint="@string/phone_number_form"
+            android:inputType="phone" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
