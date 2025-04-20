@@ -5,19 +5,14 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E9E4E4"
     tools:context=".activities.DashboardActivity">
-
-    <!-- App Logo -->
-
-    <!-- App Title -->
 
     <ImageView
         android:id="@+id/logoImage"
         android:layout_width="190dp"
         android:layout_height="106dp"
         android:layout_marginTop="30dp"
-        android:contentDescription="App Logo"
+        android:contentDescription="@string/app_logo"
         android:src="@drawable/crescendo_pal_logo_circ"
         app:layout_constraintBottom_toTopOf="@+id/titleText"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,16 +20,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Instrument Card -->
-
     <TextView
         android:id="@+id/titleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="30dp"
-        android:text="Crescendo Pal"
-        android:textColor="@color/black"
+        android:text="@string/crescendo_pal"
+        android:textColor="@color/crescendo_primary"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/instrumentCard"
@@ -53,7 +46,7 @@
         android:layout_marginBottom="42dp"
         app:cardCornerRadius="16dp"
         app:cardElevation="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/classesCard"
+        app:layout_constraintBottom_toTopOf="@+id/booksCard"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleText">
@@ -68,23 +61,22 @@
             <ImageView
                 android:layout_width="64dp"
                 android:layout_height="64dp"
-                android:contentDescription="Instrument Icon"
-                android:src="@drawable/ic_instrument" />
+                android:contentDescription="@string/instrument_icon"
+                android:src="@drawable/piano_keyboard" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:text="Instruments"
-                android:textColor="@color/black"
+                android:text="@string/instruments"
+                android:textColor="@color/crescendo_primary"
                 android:textSize="20sp"
                 android:textStyle="bold" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <!-- Classes Card -->
     <androidx.cardview.widget.CardView
-        android:id="@+id/classesCard"
+        android:id="@+id/booksCard"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginHorizontal="32dp"
@@ -93,7 +85,7 @@
         android:layout_marginBottom="42dp"
         app:cardCornerRadius="16dp"
         app:cardElevation="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/booksCard"
+        app:layout_constraintBottom_toTopOf="@+id/myHubCard"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/instrumentCard">
@@ -108,61 +100,20 @@
             <ImageView
                 android:layout_width="64dp"
                 android:layout_height="64dp"
-                android:contentDescription="Classes Icon"
-                android:src="@drawable/ic_classes" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="Lessons / Classes"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-    <!-- Books / Sheets Card -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/booksCard"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginHorizontal="32dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginBottom="42dp"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/myHubCard"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/classesCard">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:padding="16dp">
-
-            <ImageView
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                android:contentDescription="Books Icon"
+                android:contentDescription="@string/books_icon"
                 android:src="@drawable/ic_books" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:text="Books / Sheets"
-                android:textColor="@color/black"
+                android:text="@string/books_sheets"
+                android:textColor="@color/crescendo_primary"
                 android:textSize="20sp"
                 android:textStyle="bold" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <!-- MyHub Card -->
     <androidx.cardview.widget.CardView
         android:id="@+id/myHubCard"
         android:layout_width="0dp"
@@ -188,21 +139,20 @@
             <ImageView
                 android:layout_width="64dp"
                 android:layout_height="64dp"
-                android:contentDescription="Hub Icon"
+                android:contentDescription="@string/hub_icon"
                 android:src="@drawable/ic_hub" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:text="My Hub"
-                android:textColor="@color/black"
+                android:text="@string/my_hub"
+                android:textColor="@color/crescendo_primary"
                 android:textSize="20sp"
                 android:textStyle="bold" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <!-- Footer Text -->
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -211,9 +161,10 @@
         android:layout_marginBottom="46dp"
         android:fontFamily="@font/alexandria_bold"
         android:gravity="center"
-        android:text="Where musicians connect, teach, and trade"
+        android:text="@string/where_musicians_connect_teach_and_trade"
         android:textColor="#133D6D"
         android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

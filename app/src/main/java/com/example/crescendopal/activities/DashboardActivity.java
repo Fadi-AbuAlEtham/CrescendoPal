@@ -26,16 +26,13 @@ public class DashboardActivity extends AppCompatActivity {
             return insets;
         });
 
-        // Find the cards
         instrumentCard = findViewById(R.id.instrumentCard);
         bookCard = findViewById(R.id.booksCard);
         myHubCard = findViewById(R.id.myHubCard);
 
-        // Set click listeners
         instrumentCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Go to InstrumentsActivity
                 Intent intent = new Intent(DashboardActivity.this, InstrumentsActivity.class);
                 startActivity(intent);
             }
