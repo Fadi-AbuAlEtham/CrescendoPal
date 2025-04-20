@@ -103,6 +103,6 @@ public class CartActivity extends AppCompatActivity {
     }
 
     public void updateTotalPrice() {
-        txtTotal.setText(CartManager.getTotalPrice());
+        txtTotal.setText("Total: $" + CartManager.getTotalPrice());
     }
 }
