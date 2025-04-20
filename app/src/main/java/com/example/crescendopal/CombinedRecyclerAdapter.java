@@ -150,6 +150,7 @@ public class CombinedRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
 
             if (mode == MODE_CART) {
                 bvh.btnAddToCart.setImageResource(R.drawable.ic_remove_item);
+                bvh.txtQty.setVisibility(View.GONE);
                 bvh.btnAddToCart.setOnClickListener(v -> {
                     CartManager.removeBook(context, book);
                     itemList.remove(position);

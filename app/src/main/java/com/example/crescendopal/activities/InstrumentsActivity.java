@@ -302,7 +302,6 @@ public class InstrumentsActivity extends AppCompatActivity {
                 filteredList.add(i);
             }
         }
-
         adapter.notifyDataSetChanged();
     }
 }
