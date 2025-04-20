@@ -84,15 +84,17 @@ public class CombinedRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
                 ivh.instrumentImage.setImageResource(instrument.getImageResId());
             }
             if (mode == MODE_CART) {
-                ivh.btnAddToCart.setImageResource(R.drawable.ic_remove_item);
                 ivh.btnAddToCart.setOnClickListener(v -> {
-                    CartManager.removeInstrument(context, instrument);
-                    itemList.remove(position);
-                    notifyItemRemoved(position);
-                    InstrumentStorage.addInstrumentBack(context, instrument);
-                    Toast.makeText(context, "Removed from cart", Toast.LENGTH_SHORT).show();
-                    if (context instanceof CartActivity) {
-                        ((CartActivity) context).updateTotalPrice();
+                    int pos = holder.getAdapterPosition();
+                    if (pos != RecyclerView.NO_POSITION) {
+                        CartManager.removeInstrument(context, instrument);
+                        itemList.remove(instrument);
+                        notifyItemRemoved(pos);
+                        InstrumentStorage.addInstrumentBack(context, instrument);
+                        Toast.makeText(context, "Removed from cart", Toast.LENGTH_SHORT).show();
+                        if (context instanceof CartActivity) {
+                            ((CartActivity) context).updateTotalPrice();
+                        }
                     }
                 });
                 ivh.itemView.setOnClickListener(null);
@@ -152,13 +154,16 @@ public class CombinedRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
                 bvh.btnAddToCart.setImageResource(R.drawable.ic_remove_item);
                 bvh.txtQty.setVisibility(View.GONE);
                 bvh.btnAddToCart.setOnClickListener(v -> {
-                    CartManager.removeBook(context, book);
-                    itemList.remove(position);
-                    notifyItemRemoved(position);
-                    BookStorage.addBookBack(context, book);
-                    Toast.makeText(context, "Removed from cart", Toast.LENGTH_SHORT).show();
-                    if (context instanceof CartActivity) {
-                        ((CartActivity) context).updateTotalPrice();
+                    int pos = holder.getAdapterPosition();
+                    if (pos != RecyclerView.NO_POSITION) {
+                        CartManager.removeBook(context, book);
+                        itemList.remove(book);
+                        notifyItemRemoved(pos);
+                        BookStorage.addBookBack(context, book);
+                        Toast.makeText(context, "Removed from cart", Toast.LENGTH_SHORT).show();
+                        if (context instanceof CartActivity) {
+                            ((CartActivity) context).updateTotalPrice();
+                        }
                     }
                 });
                 bvh.itemView.setOnClickListener(null);
