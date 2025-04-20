@@ -48,4 +48,24 @@ public class BookStorage {
         books.add(book);
         saveBooks(context, books);
     }
+
+    public static void addBookBack(Context context, Book book) {
+        List<Book> currentList = loadBooks(context);
+
+        boolean found = false;
+
+        for (Book b : currentList) {
+            if (b.getId().equals(book.getId())) {
+                b.setQuantity(b.getQuantity() + 1);
+                found = true;
+                break;
+            }
+        }
+
+        if (!found) {
+            currentList.add(book);
+        }
+
+        saveBooks(context, currentList);
+    }
 }

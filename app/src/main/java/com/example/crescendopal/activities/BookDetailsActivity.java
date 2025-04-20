@@ -51,7 +51,6 @@ public class BookDetailsActivity extends AppCompatActivity {
         detailQuantity = findViewById(R.id.bookQuantity);
         btnBuy = findViewById(R.id.btnBuyBook);
 
-        // Load data from intent
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             bookId = extras.getString("id");
@@ -62,9 +61,8 @@ public class BookDetailsActivity extends AppCompatActivity {
             String uploader = extras.getString("uploader", "Unknown");
             bookQuantity = extras.getInt("quantity", 1);
             String imageUriStr = extras.getString("imageUri");
-            int imageRes = extras.getInt("image", R.drawable.ic_book);
+            int imageRes = extras.getInt("imageResId", R.drawable.ic_book);
 
-            // Set data to views
             detailTitle.setText(title);
             detailInstrument.setText("Instrument: " + instrument);
             detailDifficulty.setText("Level: " + difficulty);
@@ -88,7 +86,6 @@ public class BookDetailsActivity extends AppCompatActivity {
                 return;
             }
 
-            // Load and update book list
             List<Book> books = BookStorage.loadBooks(this);
             for (Book book : books) {
                 if (book.getId().equals(bookId)) {
@@ -98,10 +95,8 @@ public class BookDetailsActivity extends AppCompatActivity {
                 }
             }
 
-            // Save updated list
             BookStorage.saveBooks(this, books);
 
-            // Add to bought list
             BoughtStorage.addBook(this, getCurrentBook());
 
             Toast.makeText(this, "Book purchased!", Toast.LENGTH_SHORT).show();
@@ -117,10 +112,9 @@ public class BookDetailsActivity extends AppCompatActivity {
                 getIntent().getStringExtra("difficulty"),
                 getIntent().getBooleanExtra("downloadable", false),
                 getIntent().getDoubleExtra("price", 0.0),
-                getIntent().getIntExtra("image", R.drawable.ic_book),
+                getIntent().getIntExtra("imageResId", R.drawable.ic_book),
                 getIntent().getStringExtra("uploader"),
-                bookQuantity,
-                getIntent().hasExtra("imageUri") ? Uri.parse(getIntent().getStringExtra("imageUri")) : null
-        );
+                1,
+                getIntent().hasExtra("imageUri") ? Uri.parse(getIntent().getStringExtra("imageUri")) : null        );
     }
 }

@@ -41,7 +41,6 @@ public class InstrumentStorage {
     public static void addInstrumentBack(Context context, Instrument instrument) {
         List<Instrument> currentList = loadInstruments(context);
 
-        // Prevent duplicates
         for (Instrument i : currentList) {
             if (i.getId().equals(instrument.getId()))
                 return;

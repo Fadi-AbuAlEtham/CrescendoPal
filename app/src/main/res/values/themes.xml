@@ -16,9 +16,9 @@
         <item name="android:windowBackground">@color/crescendo_background</item>
 
         <!-- Typography -->
-        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:fontFamily">sans-serif</item>
 
         <!-- Component styling -->
-        <item name="buttonStyle">@style/Widget.CrescendoPal.Button</item>
+<!--        <item name="buttonStyle">@style/Widget.CrescendoPal.Button</item>-->
     </style>
 </resources>

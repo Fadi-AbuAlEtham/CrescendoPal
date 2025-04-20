@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.crescendopal.BookRecyclerAdapter;
 import com.example.crescendopal.R;
 import com.example.crescendopal.data.Book;
+import com.example.crescendopal.data.SeedData;
 import com.example.crescendopal.storage.BookStorage;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -45,6 +46,8 @@ public class BookActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_books);
 
+        SeedData.seedBooksIfEmpty(this);
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -60,6 +63,7 @@ public class BookActivity extends AppCompatActivity {
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        SeedData.seedInstrumentsIfEmpty(this);
         loadSavedBooks();
 
         ArrayAdapter<String> difficultyAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,
@@ -69,7 +73,7 @@ public class BookActivity extends AppCompatActivity {
 
         setupFilters();
 
-        adapter = new BookRecyclerAdapter(this, filteredList);
+        adapter = new BookRecyclerAdapter(this, filteredList, BookRecyclerAdapter.MODE_NORMAL);
         recyclerView.setAdapter(adapter);
 
         setupSearchFilter();
@@ -145,5 +149,21 @@ public class BookActivity extends AppCompatActivity {
         super.onResume();
         loadSavedBooks();
         applyAllFilters();
+    }
+
+    public List<Book> getBookList() {
+        return bookList;
+    }
+
+    public void setBookList(List<Book> bookList) {
+        this.bookList = bookList;
+    }
+
+    public List<Book> getFilteredList() {
+        return filteredList;
+    }
+
+    public void setFilteredList(List<Book> filteredList) {
+        this.filteredList = filteredList;
     }
 }

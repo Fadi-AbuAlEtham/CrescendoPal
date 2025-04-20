@@ -6,17 +6,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.crescendopal.CombinedRecyclerAdapter;
 import com.example.crescendopal.InstrumentRecyclerAdapter;
 import com.example.crescendopal.R;
-import com.example.crescendopal.storage.RentedStorage;
+import com.example.crescendopal.data.Book;
 import com.example.crescendopal.data.Instrument;
+import com.example.crescendopal.storage.BoughtStorage;
+import com.example.crescendopal.storage.RentedStorage;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MyRentedInstrumentsActivity extends AppCompatActivity {
-
     RecyclerView recyclerView;
-    InstrumentRecyclerAdapter adapter;
+    CombinedRecyclerAdapter combinedAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +29,11 @@ public class MyRentedInstrumentsActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerViewMyList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        List<Instrument> rentedList = RentedStorage.load(this);
-        adapter = new InstrumentRecyclerAdapter(this, rentedList, InstrumentRecyclerAdapter.MODE_MYHUB);
-        recyclerView.setAdapter(adapter);
+        List<Object> combinedList = new ArrayList<>();
+        combinedList.addAll(RentedStorage.loadInstruments(this));
+        combinedList.addAll(RentedStorage.loadBooks(this));
+
+        combinedAdapter = new CombinedRecyclerAdapter(this, combinedList, CombinedRecyclerAdapter.MODE_MYHUB);
+        recyclerView.setAdapter(combinedAdapter);
     }
 }

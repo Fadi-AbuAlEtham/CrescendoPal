@@ -45,7 +45,6 @@ public class InstrumentDetailsActivity extends AppCompatActivity {
             return insets;
         });
 
-        // UI references
         detailImage = findViewById(R.id.detailImage);
         detailName = findViewById(R.id.detailName);
         detailDescription = findViewById(R.id.detailDescription);
@@ -56,7 +55,6 @@ public class InstrumentDetailsActivity extends AppCompatActivity {
         btnBuy = findViewById(R.id.btnBuy);
         txtAvailability = findViewById(R.id.txtAvailability);
 
-        // Get intent data
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             instrumentName = extras.getString("name", "Unknown Instrument");
@@ -75,13 +73,11 @@ public class InstrumentDetailsActivity extends AppCompatActivity {
                 txtAvailability.setVisibility(View.GONE);
             }
 
-            // Set values
             detailName.setText(instrumentName);
             detailDescription.setText(description);
             detailPrice.setText("$" + String.format("%.2f", price));
             detailSeller.setText("Sold by: " + seller);
 
-            // Set image
             if (imageUriStr != null) {
                 Uri imageUri = Uri.parse(imageUriStr);
                 detailImage.setImageURI(imageUri);
@@ -90,7 +86,6 @@ public class InstrumentDetailsActivity extends AppCompatActivity {
                 detailImage.setImageResource(imageRes);
             }
 
-            // Set availability status
             if (!isAvailable) {
                 detailAvailability.setText("Currently Unavailable");
                 btnRent.setEnabled(false);
@@ -98,7 +93,6 @@ public class InstrumentDetailsActivity extends AppCompatActivity {
             } else {
                 detailAvailability.setText(isForRent ? "Available for Rent" : "Available for Sale");
 
-                // Button behaviors
                 btnRent.setEnabled(isForRent);
                 btnBuy.setEnabled(true);
 
@@ -107,23 +101,21 @@ public class InstrumentDetailsActivity extends AppCompatActivity {
             }
         }
 
-        // Handle Rent button click
         btnRent.setOnClickListener(v -> {
             markAsUnavailable();
             RentedStorage.addInstrument(this, getCurrentInstrument());
             Toast.makeText(this, "Rented successfully!", Toast.LENGTH_SHORT).show();
             removeFromInstruments();
-            CartManager.removeFromCart(this, getCurrentInstrument());
+            CartManager.removeInstrument(this, getCurrentInstrument());
             finish();
         });
 
-        // Handle Buy button click
         btnBuy.setOnClickListener(v -> {
             markAsUnavailable();
             BoughtStorage.addInstrument(this, getCurrentInstrument());
             Toast.makeText(this, "Purchased successfully!", Toast.LENGTH_SHORT).show();
             removeFromInstruments();
-            CartManager.removeFromCart(this, getCurrentInstrument());
+            CartManager.removeInstrument(this, getCurrentInstrument());
             finish();
         });
     }
@@ -136,8 +128,6 @@ public class InstrumentDetailsActivity extends AppCompatActivity {
                 break;
             }
         }
-//        InstrumentStorage.saveInstruments(this, instrumentList);
-//        finish(); // return to previous screen
     }
 
     private Instrument getCurrentInstrument() {

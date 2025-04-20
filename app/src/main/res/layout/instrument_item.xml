@@ -12,7 +12,6 @@
         android:layout_height="wrap_content"
         android:padding="16dp">
 
-        <!-- Image -->
         <ImageView
             android:id="@+id/imgInst"
             android:layout_width="105dp"
@@ -23,7 +22,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- Name -->
         <TextView
             android:id="@+id/txtInstName"
             android:layout_width="0dp"
@@ -36,7 +34,6 @@
             app:layout_constraintStart_toEndOf="@id/imgInst"
             app:layout_constraintTop_toTopOf="@id/imgInst" />
 
-        <!-- Description -->
         <TextView
             android:id="@+id/txtInstDesc"
             android:layout_width="0dp"
@@ -51,7 +48,6 @@
             app:layout_constraintStart_toStartOf="@id/txtInstName"
             app:layout_constraintTop_toBottomOf="@id/txtInstName" />
 
-        <!-- Seller -->
         <TextView
             android:id="@+id/txtSeller"
             android:layout_width="0dp"
@@ -63,7 +59,6 @@
             app:layout_constraintStart_toStartOf="@id/txtInstName"
             app:layout_constraintTop_toBottomOf="@id/txtInstDesc" />
 
-        <!-- Price -->
         <TextView
             android:id="@+id/txtInstPrice"
             android:layout_width="wrap_content"
@@ -74,7 +69,6 @@
             app:layout_constraintStart_toStartOf="@id/txtInstName"
             app:layout_constraintTop_toBottomOf="@id/txtSeller" />
 
-        <!-- Add to Cart Button -->
         <ImageButton
             android:id="@+id/btnAddToCart"
             android:layout_width="48dp"

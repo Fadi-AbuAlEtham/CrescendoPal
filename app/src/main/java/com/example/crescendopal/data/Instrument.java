@@ -7,8 +7,8 @@ import androidx.annotation.NonNull;
 public class Instrument implements Comparable<Instrument> {
     private String id;
     private String name;
-    private String type; // e.g., "Keyboard", "Guitar"
-    private String condition; // "New" or "Used"
+    private String type;
+    private String condition;
     private double price;
     private String description;
     private boolean isForRent;

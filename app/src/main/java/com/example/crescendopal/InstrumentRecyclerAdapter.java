@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.crescendopal.activities.CartActivity;
 import com.example.crescendopal.activities.InstrumentDetailsActivity;
 import com.example.crescendopal.activities.InstrumentsActivity;
 import com.example.crescendopal.data.Instrument;
@@ -66,35 +67,34 @@ public class InstrumentRecyclerAdapter extends RecyclerView.Adapter<InstrumentRe
         holder.instrumentDesc.setText(instrument.getDescription());
         holder.sellerName.setText("Sold by: " + instrument.getSellerName());
 
-        // Set image
         if (instrument.getImageUri() != null) {
             holder.instrumentImage.setImageURI(instrument.getImageUri());
         } else {
             holder.instrumentImage.setImageResource(instrument.getImageResId());
         }
 
-        // Dynamic behavior based on mode
         if (adapterMode == MODE_CART) {
             holder.btnAddToCart.setImageResource(R.drawable.ic_remove_item);
             holder.btnAddToCart.setOnClickListener(v -> {
-                CartManager.removeFromCart(context, instrument);
+                CartManager.removeInstrument(context, instrument);
                 instrumentList.remove(position);
                 notifyItemRemoved(position);
 
-                // Return item to main inventory
                 InstrumentStorage.addInstrumentBack(context, instrument);
 
                 Toast.makeText(context, "Removed from cart", Toast.LENGTH_SHORT).show();
+                if (context instanceof CartActivity) {
+                    ((CartActivity) context).updateTotalPrice();
+                }
             });
 
-            // Prevent going to details screen when in cart
             holder.itemView.setOnClickListener(null);
         } else if (adapterMode == MODE_MYHUB) {
             holder.btnAddToCart.setVisibility(View.GONE);
         } else {
             holder.btnAddToCart.setImageResource(R.drawable.ic_cart);
             holder.btnAddToCart.setOnClickListener(v -> {
-                CartManager.addToCart(context, instrument);
+                CartManager.addInstrument(context, instrument);
 
                 if (context instanceof InstrumentsActivity) {
                     InstrumentsActivity activity = (InstrumentsActivity) context;
@@ -110,7 +110,6 @@ public class InstrumentRecyclerAdapter extends RecyclerView.Adapter<InstrumentRe
             });
         }
 
-        // Item click → Details
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, InstrumentDetailsActivity.class);
             intent.putExtra("id", instrument.getId());

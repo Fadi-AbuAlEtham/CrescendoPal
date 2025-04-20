@@ -13,24 +13,23 @@
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
-        <!-- Image -->
         <ImageView
             android:id="@+id/detailImage"
             android:layout_width="240dp"
             android:layout_height="240dp"
             android:layout_marginBottom="16dp"
-            android:contentDescription="Instrument Image" />
+            android:contentDescription="@string/instrument_image" />
 
-        <!-- Name Label -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="4dp"
-            android:text="Instrument Name:"
+            android:text="@string/instrument_name"
             android:textColor="#666"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/detailName"
@@ -38,18 +37,16 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="12dp"
-            android:text="Yamaha Keyboard"
+            android:text="@string/yamaha_keyboard"
             android:textSize="24sp"
             android:textStyle="bold" />
 
-        <!-- Divider -->
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginBottom="16dp"
             android:background="?android:attr/listDivider" />
 
-        <!-- Description Label -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -57,9 +54,10 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="4dp"
-            android:text="Description:"
+            android:text="@string/description"
             android:textColor="#666"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/detailDescription"
@@ -69,10 +67,9 @@
             android:layout_marginTop="5dp"
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="16dp"
-            android:text="This is a digital piano with 88 keys and touch sensitivity."
+            android:text="@string/this_is_a_digital_piano_with_88_keys_and_touch_sensitivity"
             android:textSize="18sp" />
 
-        <!-- Price Label -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -80,21 +77,21 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="4dp"
-            android:text="Price:"
+            android:text="@string/price"
             android:textColor="#666"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/detailPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:text="$999"
+            android:text="@string/_999"
             android:textColor="#4CAF50"
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <!-- Seller Label -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -102,9 +99,10 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="4dp"
-            android:text="Seller:"
+            android:text="@string/seller"
             android:textColor="#666"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/detailSeller"
@@ -112,7 +110,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="16dp"
-            android:text="Sold by: John"
+            android:text="@string/sold_by_john"
             android:textColor="#888"
             android:textSize="20sp" />
 
@@ -126,21 +124,21 @@
             android:layout_marginBottom="4dp"
             android:text="@string/phone_number_form"
             android:textColor="#666"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/phoneText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:autoLink="phone"
-            android:text="123-456-7890"
+            android:text="@string/_123_456_7890"
             android:textSize="18sp"
             android:textColor="@android:color/holo_blue_dark"
             android:padding="12dp"
             android:layout_marginTop="8dp"
             android:linksClickable="true" />
 
-        <!-- Availability Label -->
         <TextView
             android:id="@+id/txtAvailability"
             android:layout_width="match_parent"
@@ -149,9 +147,10 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="4dp"
-            android:text="Availability:"
+            android:text="@string/availability"
             android:textColor="#666"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/detailAvailability"
@@ -159,11 +158,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="24dp"
-            android:text="Available for Rent"
+            android:text="@string/available_for_rent"
             android:textColor="#555"
             android:textSize="20sp" />
 
-        <!-- Rent / Buy Buttons -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

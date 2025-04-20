@@ -17,7 +17,6 @@ public class RentedStorage {
     private static final String INSTRUMENT_KEY = "rentedInstruments";
     private static final String BOOK_KEY = "rentedBooks";
 
-    // --------- Instruments ---------
     public static void saveInstruments(Context context, List<Instrument> list) {
         SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         prefs.edit().putString(INSTRUMENT_KEY, new Gson().toJson(list)).apply();
@@ -36,7 +35,6 @@ public class RentedStorage {
         saveInstruments(context, list);
     }
 
-    // --------- Books ---------
     public static void saveBooks(Context context, List<Book> list) {
         SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         prefs.edit().putString(BOOK_KEY, new Gson().toJson(list)).apply();
