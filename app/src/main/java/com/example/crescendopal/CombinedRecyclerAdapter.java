@@ -84,6 +84,7 @@ public class CombinedRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
                 ivh.instrumentImage.setImageResource(instrument.getImageResId());
             }
             if (mode == MODE_CART) {
+                ivh.btnAddToCart.setImageResource(R.drawable.ic_remove_item);
                 ivh.btnAddToCart.setOnClickListener(v -> {
                     int pos = holder.getAdapterPosition();
                     if (pos != RecyclerView.NO_POSITION) {
