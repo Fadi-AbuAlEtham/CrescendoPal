@@ -17,8 +17,6 @@
         android:paddingStart="10dp"
         android:paddingEnd="10dp">
 
-        <!-- Instrument Name -->
-
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="260dp"
@@ -45,7 +43,8 @@
             android:layout_marginBottom="4dp"
             android:text="@string/instrument_name_form"
             android:textColor="#333"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/editName"
@@ -56,14 +55,14 @@
             android:hint="@string/enter_instrument_name"
             android:inputType="textPersonName" />
 
-        <!-- Description -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
             android:text="@string/description"
             android:textColor="#333"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/editDescription"
@@ -75,14 +74,14 @@
             android:inputType="textMultiLine"
             android:minLines="2" />
 
-        <!-- Price -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
             android:text="@string/price_form"
             android:textColor="#333"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/editPrice"
@@ -93,14 +92,14 @@
             android:hint="@string/enter_price"
             android:inputType="numberDecimal" />
 
-        <!-- Seller Name -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
             android:text="@string/seller_name_form"
             android:textColor="#333"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/editSeller"
@@ -111,7 +110,6 @@
             android:hint="@string/enter_your_name"
             android:inputType="text" />
 
-        <!-- Type -->
         <TextView
             android:id="@+id/textView3"
             android:layout_width="match_parent"
@@ -121,14 +119,16 @@
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="4dp"
             android:text="@string/phone_number_form"
-            android:textColor="#666"
-            android:textSize="24sp" />
+            android:textColor="#333"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/editTextPhone2"
             android:layout_width="match_parent"
             android:layout_height="64dp"
             android:layout_marginBottom="10dp"
+            android:autofillHints="phone number"
             android:ems="10"
             android:hint="@string/phone_number_form"
             android:inputType="phone" />
@@ -139,7 +139,8 @@
             android:layout_marginBottom="4dp"
             android:text="@string/instrument_type_form"
             android:textColor="#333"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <Spinner
             android:id="@+id/spinnerType"
@@ -147,14 +148,14 @@
             android:layout_height="60dp"
             android:layout_marginBottom="12dp" />
 
-        <!-- Condition -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
             android:text="@string/condition_form"
             android:textColor="#333"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <RadioGroup
             android:id="@+id/radioGroupCondition"
@@ -180,14 +181,14 @@
                 android:textSize="16sp" />
         </RadioGroup>
 
-        <!-- For Rent -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
             android:text="@string/rental_option_form"
             android:textColor="#333"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <Switch
             android:id="@+id/switchForRent"
@@ -197,14 +198,14 @@
             android:text="Available for Rent?"
             android:textSize="16sp" />
 
-        <!-- Image Upload -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
             android:text="@string/upload_image_form"
             android:textColor="#333"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <FrameLayout
             android:layout_width="200dp"
@@ -242,7 +243,6 @@
                 android:textSize="14sp" />
         </FrameLayout>
 
-        <!-- Submit Button -->
         <Button
             android:id="@+id/btnAddInstrument"
             android:layout_width="wrap_content"

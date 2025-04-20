@@ -8,28 +8,15 @@ public class Book {
     private String id;
     private String title;
     private String instrument;
-    private String difficulty; // e.g., "Beginner", "Intermediate"
+    private String difficulty;
     private boolean isDownloadable;
     private double price;
     private int imageResId;
     private String uploaderName;
     private int quantity;
+    private Uri imageUri;
 
     public Book() {
-    }
-
-    public Book(String id, String title, String instrument, String difficulty,
-                boolean isDownloadable, double price, int imageResId,
-                String uploaderName, int quantity) {
-        this.id = id;
-        this.title = title;
-        this.instrument = instrument;
-        this.difficulty = difficulty;
-        this.isDownloadable = isDownloadable;
-        this.price = price;
-        this.imageResId = imageResId;
-        this.uploaderName = uploaderName;
-        this.quantity = quantity;
     }
 
     public Book(String id, String title, String instrument, String difficulty, boolean downloadable, double price, int image, String uploader, int bookQuantity, Uri uri) {
@@ -37,11 +24,12 @@ public class Book {
         this.title = title;
         this.instrument = instrument;
         this.difficulty = difficulty;
-        this.isDownloadable = isDownloadable;
+        this.isDownloadable = downloadable;
         this.price = price;
-        this.imageResId = imageResId;
-        this.uploaderName = uploaderName;
-        this.quantity = quantity;
+        this.imageResId = image;
+        this.uploaderName = uploader;
+        this.quantity = bookQuantity;
+        this.imageUri = uri;
     }
 
 
@@ -115,6 +103,14 @@ public class Book {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public Uri getImageUri() {
+        return imageUri;
+    }
+
+    public void setImageUri(Uri imageUri) {
+        this.imageUri = imageUri;
     }
 
     @NonNull

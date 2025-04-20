@@ -9,110 +9,119 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_horizontal">
+        android:layout_margin="20dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
         <ImageView
             android:id="@+id/bookImage"
             android:layout_width="240dp"
             android:layout_height="240dp"
+            android:layout_marginTop="15dp"
             android:layout_marginBottom="16dp"
-            android:contentDescription="Book Cover" />
+            android:contentDescription="@string/book_cover" />
 
         <TextView
-            android:text="Title:"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/title"
+            android:textColor="#666"
             android:textSize="20sp"
-            android:textColor="#666" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/bookTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
+            android:layout_marginBottom="12dp"
             android:textSize="24sp"
-            android:layout_marginBottom="12dp" />
+            android:textStyle="bold" />
 
         <TextView
-            android:text="Instrument:"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/instrument"
+            android:textColor="#666"
             android:textSize="20sp"
-            android:textColor="#666" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/bookInstrument"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:layout_marginBottom="12dp" />
+            android:layout_marginBottom="12dp"
+            android:textSize="18sp" />
 
         <TextView
-            android:text="Difficulty:"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/difficulty"
+            android:textColor="#666"
             android:textSize="20sp"
-            android:textColor="#666" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/bookDifficulty"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:layout_marginBottom="12dp" />
+            android:layout_marginBottom="12dp"
+            android:textSize="18sp" />
 
         <TextView
-            android:text="Uploader:"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/uploader"
+            android:textColor="#666"
             android:textSize="20sp"
-            android:textColor="#666" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/bookUploader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:layout_marginBottom="12dp" />
+            android:layout_marginBottom="12dp"
+            android:textSize="18sp" />
 
         <TextView
-            android:text="Price:"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/price"
+            android:textColor="#666"
             android:textSize="20sp"
-            android:textColor="#666" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/bookPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
             android:textColor="#4CAF50"
-            android:textStyle="bold"
             android:textSize="20sp"
-            android:layout_marginBottom="12dp" />
+            android:textStyle="bold" />
 
         <TextView
-            android:text="Quantity Available:"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/quantity_available"
+            android:textColor="#666"
             android:textSize="20sp"
-            android:textColor="#666" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/bookQuantity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:layout_marginBottom="24dp" />
+            android:layout_marginBottom="24dp"
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/btnBuyBook"
-            android:layout_width="match_parent"
+            android:layout_width="208dp"
             android:layout_height="wrap_content"
-            android:text="Buy Book"
-            android:textSize="20sp"
-            android:enabled="true" />
+            android:enabled="true"
+            android:text="@string/buy_book"
+            android:textSize="20sp" />
 
     </LinearLayout>
 </ScrollView>

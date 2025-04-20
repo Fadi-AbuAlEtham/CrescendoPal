@@ -84,15 +84,17 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/bookRecyclerView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="350dp"
+        android:layout_height="385dp"
         android:layout_marginTop="12dp"
         android:layout_marginBottom="84dp"
         android:contentDescription="@string/list_of_books"
-        app:layout_constraintTop_toBottomOf="@+id/filterSection"
         app:layout_constraintBottom_toTopOf="@+id/btnAddBook"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.459"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/filterSection"
+        app:layout_constraintVertical_bias="0.013" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnAddBook"

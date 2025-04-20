@@ -34,7 +34,6 @@ public class AddInstrumentActivity extends AppCompatActivity {
             return insets;
         });
 
-        // Find views
         editName = findViewById(R.id.editName);
         editDescription = findViewById(R.id.editDescription);
         editPrice = findViewById(R.id.editPrice);
@@ -62,7 +61,7 @@ public class AddInstrumentActivity extends AppCompatActivity {
                         "Marimba", "Xylophone", "Triangle", "Timpani",
                         "DJ Controller", "Voice / Vocals", "Studio Equipment",
 
-                        // Oriental Instruments 🎵
+                        // Oriental Instruments
                         "Oud", "Qanun", "Rababa", "Buzuq", "Tanbur", "Santoor", "Kamanjah", "Rebab",
                         "Tabla Baladi", "Riq", "Daf", "Bendir", "Naqareh", "Zills / Sagat",
                         "Ney", "Arghul", "Mizmar", "Zurna", "Kawala", "Duduk",
@@ -71,14 +70,12 @@ public class AddInstrumentActivity extends AppCompatActivity {
         typeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerType.setAdapter(typeAdapter);
 
-        // Image click
         imagePreview.setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_PICK);
             intent.setType("image/*");
             startActivityForResult(intent, PICK_IMAGE);
         });
 
-        // Add button click
         btnAddInstrument.setOnClickListener(v -> {
             String name = editName.getText().toString().trim();
             String desc = editDescription.getText().toString().trim();
@@ -88,18 +85,46 @@ public class AddInstrumentActivity extends AppCompatActivity {
             String phone = editPhone.getText().toString().trim();
             boolean isForRent = switchForRent.isChecked();
 
-            // Get condition
-            int selectedRadioId = radioGroupCondition.getCheckedRadioButtonId();
-            String condition = (selectedRadioId == R.id.radioNew) ? "New" : "Used";
-
-            if (name.isEmpty() || desc.isEmpty() || priceStr.isEmpty() || seller.isEmpty()) {
-                Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show();
+            if (name.length() < 3) {
+                Toast.makeText(this, "Name must be at least 3 characters", Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            double price = Double.parseDouble(priceStr);
+            if (desc.length() < 10) {
+                Toast.makeText(this, "Description must be at least 10 characters", Toast.LENGTH_SHORT).show();
+                return;
+            }
 
-            // Pass data back to InstrumentsActivity
+            double price;
+            try {
+                price = Double.parseDouble(priceStr);
+                if (price <= 0) {
+                    Toast.makeText(this, "Price must be greater than zero", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+            } catch (NumberFormatException e) {
+                Toast.makeText(this, "Invalid price format", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if (seller.length() < 2) {
+                Toast.makeText(this, "Seller name must be at least 2 characters", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if (phone.isEmpty() || phone.length() < 6) {
+                Toast.makeText(this, "Please enter a valid phone number", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            int selectedRadioId = radioGroupCondition.getCheckedRadioButtonId();
+            if (selectedRadioId == -1) {
+                Toast.makeText(this, "Please select the condition (New or Used)", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            String condition = (selectedRadioId == R.id.radioNew) ? "New" : "Used";
+
             Intent resultIntent = new Intent();
             resultIntent.putExtra("id", "inst_" + System.currentTimeMillis());
             resultIntent.putExtra("name", name);
@@ -114,6 +139,7 @@ public class AddInstrumentActivity extends AppCompatActivity {
             if (imageUri != null) {
                 resultIntent.putExtra("imageUri", imageUri.toString());
             }
+
             setResult(RESULT_OK, resultIntent);
             finish();
         });

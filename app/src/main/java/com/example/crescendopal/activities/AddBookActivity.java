@@ -12,6 +12,10 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.crescendopal.R;
+import com.example.crescendopal.data.Book;
+import com.example.crescendopal.storage.BookStorage;
+
+import java.util.List;
 
 public class AddBookActivity extends AppCompatActivity {
 
@@ -35,7 +39,6 @@ public class AddBookActivity extends AppCompatActivity {
             return insets;
         });
 
-        // Bind views
         editTitle = findViewById(R.id.editTitle);
         editPrice = findViewById(R.id.editPrice);
         editUploader = findViewById(R.id.editUploader);
@@ -46,7 +49,6 @@ public class AddBookActivity extends AppCompatActivity {
         imagePreview = findViewById(R.id.imagePreview);
         btnAddBook = findViewById(R.id.btnAddBook);
 
-        // Spinner data
         ArrayAdapter<String> instrumentAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item,
                 getResources().getStringArray(R.array.instrument_types));
@@ -59,14 +61,12 @@ public class AddBookActivity extends AppCompatActivity {
         difficultyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerDifficulty.setAdapter(difficultyAdapter);
 
-        // Image picker
         imagePreview.setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_PICK);
             intent.setType("image/*");
             startActivityForResult(intent, PICK_IMAGE);
         });
 
-        // Add button click
         btnAddBook.setOnClickListener(v -> {
             String title = editTitle.getText().toString().trim();
             String uploader = editUploader.getText().toString().trim();
@@ -76,27 +76,72 @@ public class AddBookActivity extends AppCompatActivity {
             String difficulty = spinnerDifficulty.getSelectedItem().toString();
             boolean isDownloadable = switchDownloadable.isChecked();
 
-            if (title.isEmpty() || uploader.isEmpty() || priceStr.isEmpty() || quantityStr.isEmpty()) {
-                Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show();
+            if (title.length() < 3) {
+                Toast.makeText(this, "Title must be at least 3 characters", Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            double price = Double.parseDouble(priceStr);
-            int quantity = Integer.parseInt(quantityStr);
-
-            Intent resultIntent = new Intent();
-            resultIntent.putExtra("id", "book_" + System.currentTimeMillis());
-            resultIntent.putExtra("title", title);
-            resultIntent.putExtra("instrument", instrument);
-            resultIntent.putExtra("difficulty", difficulty);
-            resultIntent.putExtra("downloadable", isDownloadable);
-            resultIntent.putExtra("price", price);
-            resultIntent.putExtra("uploader", uploader);
-            resultIntent.putExtra("quantity", quantity);
-            if (imageUri != null) {
-                resultIntent.putExtra("imageUri", imageUri.toString());
+            if (uploader.length() < 3) {
+                Toast.makeText(this, "Uploader name must be at least 3 characters", Toast.LENGTH_SHORT).show();
+                return;
             }
-            setResult(RESULT_OK, resultIntent);
+
+            double price;
+            try {
+                price = Double.parseDouble(priceStr);
+                if (price <= 0) {
+                    Toast.makeText(this, "Price must be greater than zero", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+            } catch (NumberFormatException e) {
+                Toast.makeText(this, "Invalid price format", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            int quantity;
+            try {
+                quantity = Integer.parseInt(quantityStr);
+                if (quantity <= 0) {
+                    Toast.makeText(this, "Quantity must be a positive number", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+            } catch (NumberFormatException e) {
+                Toast.makeText(this, "Invalid quantity format", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if (instrument.equals("Select Instrument")) {
+                Toast.makeText(this, "Please select an instrument", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if (difficulty.isEmpty()) {
+                Toast.makeText(this, "Please select a difficulty level", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if (imageUri == null) {
+                Toast.makeText(this, "Consider selecting a cover image", Toast.LENGTH_SHORT).show();
+            }
+
+            Book newBook = new Book(
+                    "book_" + System.currentTimeMillis(),
+                    title,
+                    instrument,
+                    difficulty,
+                    isDownloadable,
+                    price,
+                    R.drawable.ic_book,
+                    uploader,
+                    quantity,
+                    imageUri
+            );
+
+            List<Book> books = BookStorage.loadBooks(this);
+            books.add(newBook);
+            BookStorage.saveBooks(this, books);
+
+            Toast.makeText(this, "Book added!", Toast.LENGTH_SHORT).show();
             finish();
         });
     }
